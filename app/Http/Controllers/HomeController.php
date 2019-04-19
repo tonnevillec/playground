@@ -2,27 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\PostsRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * @var PostsRepository
      */
-    public function __construct()
+    private $repository;
+
+    /**
+     * HomeController constructor.
+     * @param PostsRepository $postsRepository
+     */
+    public function __construct (PostsRepository $postsRepository)
     {
-        $this->middleware('auth');
+        $this->repository = $postsRepository;
     }
 
     /**
-     * Show the application dashboard.
+     * Show the blog page
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('home');
+        $posts = $this->repository->getPublished()->sortByDesc('created_at');
+
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
     }
 }

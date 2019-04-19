@@ -24,10 +24,11 @@ class CreateInitialDb extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('content');
-            $table->bigInteger('author')->unsigned();
+            $table->bigInteger('author_id')->unsigned();
+            $table->boolean('publie')->default(false);
             $table->timestamps();
 
-            $table->foreign('author')
+            $table->foreign('author_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
@@ -51,19 +52,17 @@ class CreateInitialDb extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('post_tag', function (Blueprint $table) {
-            $table->bigInteger('post_id')->unsigned()->index();
-            $table->bigInteger('tag_id')->unsigned()->index();
+        Schema::create('posts_tags', function (Blueprint $table) {
+            $table->bigInteger('posts_id')->unsigned()->index();
+            $table->bigInteger('tags_id')->unsigned()->index();
 
-            $table->foreign('post_id')
+            $table->foreign('posts_id')
                 ->references('id')
-                ->on('posts')
-                ->ondelete('cascade');
+                ->on('posts');
 
-            $table->foreign('tag_id')
+            $table->foreign('tags_id')
                 ->references('id')
-                ->on('tags')
-                ->ondelete('cascade');
+                ->on('tags');
         });
     }
 
@@ -74,7 +73,7 @@ class CreateInitialDb extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('posts_tags');
         Schema::dropIfExists('comments');
         Schema::dropIfExists('posts');
         Schema::dropIfExists('tags');

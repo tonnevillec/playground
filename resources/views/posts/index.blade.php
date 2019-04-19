@@ -9,7 +9,7 @@
         @foreach($posts as $post)
             <div class="blog-post card shadow mb-4 mt-6">
                 <div class="blog-post-tag">
-                    <img src="{{ url("images/laravel.png") }}" class="img-circle" alt="laravel">
+                    <img src="{{ url("images/tags/laravel.png") }}" class="img-circle" alt="laravel">
                 </div>
 
                 <div class="card-body">
@@ -20,7 +20,7 @@
                     </p>
 
                     <div class="card-text">
-                        {{ $post->content }}
+                        {!!  $post->content !!}
 
                         <div class="text-right">
                             <a href="#" class="btn btn-sm btn-primary">Read more</a>
@@ -31,10 +31,10 @@
                 <div class="card-footer post-blog-footer">
                     <ul class="list-group list-group-horizontal-sm">
                         <li class="list-group-item">
-                            <img src="{{ url("images/vuejs.svg") }}" class="img-circle img-to-icon" alt="Vuejs"> VueJs
+                            <img src="{{ url("images/tags/vue.png") }}" class="img-circle img-to-icon" alt="Vuejs"> VueJs
                         </li>
                         <li class="list-group-item">
-                            <img src="{{ url("images/laravel.png") }}" class="img-circle img-to-icon" alt="laravel"> Laravel
+                            <img src="{{ url("images/tags/laravel.png") }}" class="img-circle img-to-icon" alt="laravel"> Laravel
                         </li>
                     </ul>
 
@@ -46,7 +46,7 @@
 
         <div class="blog-post card shadow mb-4 mt-6">
             <div class="blog-post-tag">
-                <img src="{{ url("images/vuejs.svg") }}" class="img-circle" alt="Vuejs">
+                <img src="{{ url("images/tags/vue.png") }}" class="img-circle" alt="Vuejs">
             </div>
 
             <div class="card-body">
@@ -104,7 +104,7 @@
             <div class="card-footer post-blog-footer">
                 <ul class="list-group list-group-horizontal-sm">
                     <li class="list-group-item">
-                        <img src="{{ url("images/vuejs.svg") }}" class="img-circle img-to-icon" alt="Vuejs"> VueJs
+                        <img src="{{ url("images/tags/vue.png") }}" class="img-circle img-to-icon" alt="Vuejs"> VueJs
                     </li>
                     <li class="list-group-item">
                         <img src="{{ url("images/laravel.png") }}" class="img-circle img-to-icon" alt="laravel"> Laravel
@@ -117,7 +117,7 @@
 
         <div class="blog-post card shadow mb-4 mt-6">
             <div class="blog-post-tag">
-                <img src="{{ url("images/vuejs.svg") }}" class="img-circle" alt="Laravel">
+                <img src="{{ url("images/tags/vue.png") }}" class="img-circle" alt="Laravel">
             </div>
 
             <div class="card-body">

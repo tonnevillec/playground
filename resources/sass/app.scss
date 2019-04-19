@@ -14,8 +14,8 @@
 
 body {
   //background-image: url('/images/background.png');
-  background-color: #F7F7FA;
-  color: #000;
+  background-color: $body-bg;
+  color: $black;
 }
 
 .img-to-icon {

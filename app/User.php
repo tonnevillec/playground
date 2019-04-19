@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Posts;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,4 +39,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    /**
+     * Get all of the posts for the user.
+     */
+    public function posts ()
+    {
+        return $this->hasMany(Posts::class);
+    }
 }

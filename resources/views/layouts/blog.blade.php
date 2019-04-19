@@ -27,24 +27,24 @@
     {{--                <a class="text-muted" href="#">Subscribe</a>--}}
                 </div>
                 <div class="col-4 text-center">
-                    <a class="blog-header-logo text-dark" href="#">{{ config('app.name', 'Playground') }}</a>
+                    <a class="blog-header-logo" href="{{ route('home') }}">{{ config('app.name', 'Playground') }}</a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="text-muted" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                             viewBox="0 0 24 24" focusable="false"><title>Search</title>
-                            <circle cx="10.5" cy="10.5" r="7.5"></circle>
-                            <path d="M21 21l-5.2-5.2"></path>
-                        </svg>
-                    </a>
+{{--                    <a class="text-muted" href="#">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"--}}
+{{--                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"--}}
+{{--                             viewBox="0 0 24 24" focusable="false"><title>Search</title>--}}
+{{--                            <circle cx="10.5" cy="10.5" r="7.5"></circle>--}}
+{{--                            <path d="M21 21l-5.2-5.2"></path>--}}
+{{--                        </svg>--}}
+{{--                    </a>--}}
 
                     @guest
                         @if (Route::has('register'))
-                            <a class="btn btn-sm btn-outline-secondary mr-2" href="{{ route('register') }}">{{ __('Inscription') }}</a>
+                            <a class="btn btn-sm btn-outline-primary mr-2" href="{{ route('register') }}">{{ __('Inscription') }}</a>
                         @endif
 
-                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                        <a class="btn btn-sm btn-outline-primary" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                     @else
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -54,6 +54,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a href="{{ route('admin') }}" class="dropdown-item">
+                                    Administration
+                                </a>
+                                <hr />
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
@@ -74,13 +78,13 @@
 
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/css.svg") }}" alt="" class="img-to-icon"> CSS</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/laravel.png") }}" alt="" class="img-to-icon"> Laravel</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/mysql.svg") }}" alt="" class="img-to-icon"> MySql</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/symfony.svg") }}" alt="" class="img-to-icon"> Symfony</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/vagrant.svg") }}" alt="" class="img-to-icon"> Vagrant</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/vuejs.svg") }}" alt="" class="img-to-icon"> VueJs</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/webpack.svg") }}" alt="" class="img-to-icon"> Webpack</a>
+                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/css3.png") }}" alt="" class="img-to-icon"> CSS</a>
+                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/laravel.png") }}" alt="" class="img-to-icon"> Laravel</a>
+                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/mysql.png") }}" alt="" class="img-to-icon"> MySql</a>
+                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/symfony.png") }}" alt="" class="img-to-icon"> Symfony</a>
+                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/vagrant.png") }}" alt="" class="img-to-icon"> Vagrant</a>
+                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/vue.png") }}" alt="" class="img-to-icon"> VueJs</a>
+                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/webpack.png") }}" alt="" class="img-to-icon"> Webpack</a>
             </nav>
         </div>
 
@@ -92,7 +96,7 @@
                     </a>
 
                     <div class="blog-post-tag-sm">
-                        <img src="{{ url("images/laravel.png") }}" class="img-circle" alt="laravel">
+                        <img src="{{ url("images/tags/laravel.png") }}" class="img-circle" alt="laravel">
                     </div>
 
                     <div class="card-body">
@@ -122,7 +126,7 @@
                     </a>
 
                     <div class="blog-post-tag-sm">
-                        <img src="{{ url("images/css.svg") }}" class="img-circle" alt="css">
+                        <img src="{{ url("images/tags/css3.png") }}" class="img-circle" alt="css">
                     </div>
 
                     <div class="card-body">
