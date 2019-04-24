@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tags;
 use App\Repository\PostsRepository;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Tag;
 
 class HomeController extends Controller
 {
@@ -31,8 +33,13 @@ class HomeController extends Controller
     {
         $posts = $this->repository->getPublished()->sortByDesc('created_at');
 
+        $tags = Tags::withCount('posts')
+            ->get()
+            ->sortByDesc('posts_count');
+
         return view('posts.index', [
             'posts' => $posts,
+            'tags' => $tags,
         ]);
     }
 }

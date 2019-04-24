@@ -16559,6 +16559,20 @@ a.blog-post-pin:hover {
   color: #999999;
 }
 
+.show-resume-card {
+  height: 250px;
+  overflow: hidden;
+}
+
+.show-all-card {
+  overflow: visible;
+  height: auto;
+}
+
+.loadLess {
+  display: none;
+}
+
 /*
  * Footer
  */

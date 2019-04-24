@@ -80,13 +80,9 @@
 
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/css3.png") }}" alt="" class="img-to-icon"> CSS</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/laravel.png") }}" alt="" class="img-to-icon"> Laravel</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/mysql.png") }}" alt="" class="img-to-icon"> MySql</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/symfony.png") }}" alt="" class="img-to-icon"> Symfony</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/vagrant.png") }}" alt="" class="img-to-icon"> Vagrant</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/vue.png") }}" alt="" class="img-to-icon"> VueJs</a>
-                <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/webpack.png") }}" alt="" class="img-to-icon"> Webpack</a>
+                @foreach ($tags as $tag)
+                    <a class="p-2 btn btn-light" href="#"><img src="{{ url("images/tags/".$tag->icon) }}" alt="{{ $tag->name }}" class="img-to-icon"> {{ $tag->name }}</a>
+                @endforeach
             </nav>
         </div>
 

@@ -4,12 +4,14 @@ namespace App\Repository;
 
 use App\Models\Posts;
 
+
 class PostsRepository {
 
     /**
      * @var Posts
      */
     private $posts;
+
 
     /**
      * PostsRepository constructor.

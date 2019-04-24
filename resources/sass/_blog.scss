@@ -169,6 +169,20 @@ a.blog-post-pin:hover {
   color: $lightblack;
 }
 
+.show-resume-card {
+  height: 250px;
+  overflow: hidden;
+}
+
+.show-all-card {
+  overflow: visible;
+  height: auto;
+}
+
+.loadLess {
+  display: none;
+}
+
 /*
  * Footer
  */

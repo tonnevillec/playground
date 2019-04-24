@@ -9,21 +9,24 @@
         @foreach($posts as $post)
             <div class="blog-post card shadow mb-4 mt-6">
                 <div class="blog-post-tag">
-                    <img src="{{ url("images/tags/".$post->headerTag()->first()->icon) }}" class="img-circle" alt="laravel">
+                    <img src="{{ url("images/tags/".$post->headerTag()->first()->icon) }}" class="img-circle" alt="{{ $post->headerTag()->first()->name }}">
                 </div>
 
                 <div class="card-body">
                     <h2 class="blog-post-title">{{ $post->title }}</h2>
 
                     <p class="blog-post-meta">
-                        <i class="fas fa-calendar"></i> January 1, 2014 by <a href="#"><i class="fas fa-user"></i> Mark</a>
+                        <i class="fas fa-calendar"></i> {{ date_format($post->created_at, 'd M Y à H:i') }} par <i class="fas fa-user"></i> --== {{ $post->author->pseudo }} ==--
                     </p>
 
                     <div class="card-text">
-                        {!!  $post->content !!}
+                        <div class="show-resume-card" id="{{ Str::slug($post->id.' '.$post->title, '-') }}">
+                            {!! $post->content !!}
+                        </div>
 
                         <div class="text-right">
-                            <a href="#" class="btn btn-sm btn-primary">Read more</a>
+                            <button type="button" class="btn btn-sm btn-primary loadMore" data-target="#{{ Str::slug($post->id.' '.$post->title, '-') }}" data-content="#btnShowLess{{ $post->id }}" id="btnShowMore{{ $post->id }}">Read more</button>
+                            <button type="button" class="btn btn-sm btn-primary loadLess" data-target="#{{ Str::slug($post->id.' '.$post->title, '-') }}" data-content="#btnShowMore{{ $post->id }}" id="btnShowLess{{ $post->id }}">Read less</button>
                         </div>
                     </div>
                 </div>
@@ -40,7 +43,7 @@
                         @endforeach
                     </ul>
 
-                    <p class="card-text text-right"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text text-right"><small class="text-muted">Dernière mise à jour : {{ date_format($post->updated_at, 'd M Y à H:i') }}</small></p>
                 </div>
             </div>
         @endforeach
@@ -186,4 +189,22 @@
 
     </div>
 
+@endsection
+
+@section('script')
+    <script>
+        $(".loadMore").on('click', function(){
+            var targetId = $(this).data('target')
+            $(targetId).addClass('show-all-card').removeClass('show-resume-card')
+            $(this).hide()
+            $($(this).data('content')).show()
+        })
+
+        $(".loadLess").on('click', function(){
+            var targetId = $(this).data('target')
+            $(targetId).addClass('show-resume-card').removeClass('show-all-card')
+            $(this).hide()
+            $($(this).data('content')).show()
+        })
+    </script>
 @endsection
