@@ -54,10 +54,12 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{ route('admin') }}" class="dropdown-item">
-                                    Administration
-                                </a>
-                                <hr />
+                                @if (Auth::user()->admin)
+                                    <a href="{{ route('admin') }}" class="dropdown-item">
+                                        Administration
+                                    </a>
+                                    <hr />
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">

@@ -2,29 +2,29 @@
 
 @section('admin_content')
     <div class="card-header">
-        ARTICLES
+        TAGS
     </div>
 
     <div class="card-body">
         <h2 class="card-title">
             @if($form->getModel()->exists)
-                Edition de l'article
+                Edition du tag
             @else
-                Nouvel article
+                Nouveau tag
             @endif
         </h2>
 
         {!! form_start($form) !!}
 
-        {!! form_row($form->publie) !!}
+        <div class="row">
+            <div class="col-8">
+                {!! form_row($form->name) !!}
+            </div>
 
-        {!! form_row($form->title) !!}
-
-        {!! form_row($form->content) !!}
-
-        {!! form_row($form->headerTag) !!}
-
-        {!! form_row($form->tags) !!}
+            <div class="col">
+                {!! form_row($form->icon) !!}
+            </div>
+        </div>
 
         {!! form_row($form->submit) !!}
 

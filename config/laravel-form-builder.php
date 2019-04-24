@@ -45,6 +45,8 @@ return [
     'default_namespace' => '',
 
     'custom_fields' => [
+        'logo' => \App\Forms\Fields\LogoType::class,
+        'switch' => \App\Forms\Fields\SwitchType::class,
 //        'datetime' => App\Forms\Fields\Datetime::class
     ]
 ];

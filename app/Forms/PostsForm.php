@@ -34,10 +34,17 @@ class PostsForm extends Form
             ->add('publie', 'checkbox', [
                 'value' => 1
             ])
+            ->add('headerTag', 'entity', [
+                'class' => Tags::class,
+                'multiple' => false,
+                'property' => 'name',
+            ])
             ->add('tags', 'entity', [
                 'class' => Tags::class,
                 'multiple' => true,
+                'expanded' => false,
                 'property' => 'name',
+                'empty_value' => '=== Sélection de 1 ou plusieurs tags ==='
             ])
         ;
 

@@ -9,7 +9,7 @@
         @foreach($posts as $post)
             <div class="blog-post card shadow mb-4 mt-6">
                 <div class="blog-post-tag">
-                    <img src="{{ url("images/tags/laravel.png") }}" class="img-circle" alt="laravel">
+                    <img src="{{ url("images/tags/".$post->headerTag()->first()->icon) }}" class="img-circle" alt="laravel">
                 </div>
 
                 <div class="card-body">
@@ -30,12 +30,14 @@
 
                 <div class="card-footer post-blog-footer">
                     <ul class="list-group list-group-horizontal-sm">
-                        <li class="list-group-item">
-                            <img src="{{ url("images/tags/vue.png") }}" class="img-circle img-to-icon" alt="Vuejs"> VueJs
+                        <li class="list-group-item list-group-item-primary">
+                            <img src="{{ url("images/tags/".$post->headerTag()->first()->icon) }}" class="img-circle img-to-icon" alt="{{$post->headerTag()->first()->name}}"> {{$post->headerTag()->first()->name}}
                         </li>
+                        @foreach ($post->tags()->get() as $tag)
                         <li class="list-group-item">
-                            <img src="{{ url("images/tags/laravel.png") }}" class="img-circle img-to-icon" alt="laravel"> Laravel
+                            <img src="{{ url("images/tags/".$tag->icon) }}" class="img-circle img-to-icon" alt="{{$tag->name}}"> {{$tag->name}}
                         </li>
+                        @endforeach
                     </ul>
 
                     <p class="card-text text-right"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -107,7 +109,7 @@
                         <img src="{{ url("images/tags/vue.png") }}" class="img-circle img-to-icon" alt="Vuejs"> VueJs
                     </li>
                     <li class="list-group-item">
-                        <img src="{{ url("images/laravel.png") }}" class="img-circle img-to-icon" alt="laravel"> Laravel
+                        <img src="{{ url("images/tags/laravel.png") }}" class="img-circle img-to-icon" alt="laravel"> Laravel
                     </li>
                 </ul>
 

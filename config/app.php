@@ -229,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Posts extends Model
@@ -12,11 +11,17 @@ class Posts extends Model
     ];
 
     public function tags () {
-        return $this->belongsToMany(Tags::class);
+        return $this->belongsToMany(Tags::class)->wherePivot('header_tag', '=', false);
+    }
+
+    public function headerTag ()
+    {
+        return $this->belongsToMany(Tags::class)->wherePivot('header_tag', '=',true);
     }
 
     public function author ()
     {
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
+
 }

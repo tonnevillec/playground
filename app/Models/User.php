@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Models\Posts;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'firstname', 'lastname', 'pseudo', 'email', 'password',
-        'avatar', 'twitter', 'website'
+        'avatar', 'twitter', 'website', 'admin'
     ];
 
     /**
@@ -47,4 +46,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Posts::class);
     }
+
 }

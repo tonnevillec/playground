@@ -15,8 +15,13 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 
     Route::resource('posts', 'Admin\PostsController');
+    Route::resource('tags', 'Admin\TagsController')->except([
+        'destroy',
+    ]);
+
+    Route::resource('users', 'Admin\UsersController');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Forms\PostsForm;
 use App\Http\Controllers\Controller;
 use App\Models\Posts;
+use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -104,9 +105,21 @@ class PostsController extends Controller
 
         $post->save();
 
-        if($values->has('tags') && count($values->get('tags')) !== 0){
-            $post->tags()->sync($values->get('tags'));
+        if($values->has('headerTag')){
+//            $headerTags[$values['headerTag']] = ['header_tag' => true];
+            $post->headerTag()->sync([$values['headerTag'] => ['header_tag' => true]]);
         }
+
+        $tags = [];
+
+        if($values->has('tags') && count($values->get('tags')) !== 0 ){
+            foreach ($values['tags'] as $tag) {
+                if($tag !== $values->get('headerTag') && $tag !== null) {
+                    $tags[$tag] = ['header_tag' => false];
+                }
+            }
+        }
+        $post->tags()->sync($tags);
 
         return $post;
     }

@@ -58,7 +58,8 @@ class CreateInitialDb extends Migration
 
             $table->foreign('posts_id')
                 ->references('id')
-                ->on('posts');
+                ->on('posts')
+                ->onDelete('cascade');
 
             $table->foreign('tags_id')
                 ->references('id')
