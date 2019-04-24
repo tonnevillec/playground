@@ -8,6 +8,7 @@ use App\Models\Posts;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 class PostsController extends Controller
@@ -93,6 +94,8 @@ class PostsController extends Controller
         $values = collect($datas)->filter(function ($item) {
             return !is_null($item);
         });
+
+        $values['slug'] = Str::slug($values['title'], '-');
 
         if($post !== null) {
             $post->fill($values->toArray());

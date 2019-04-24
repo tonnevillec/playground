@@ -29,7 +29,10 @@ class PostsForm extends Form
             ])
             ->add('content', 'textarea', [
                 'rules' => 'required',
-                'label' => 'Contenu'
+                'label' => 'Contenu',
+                'attr' => [
+                    'class' => 'trumbowyg'
+                ]
             ])
             ->add('publie', 'checkbox', [
                 'value' => 1

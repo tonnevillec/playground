@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "copydirectory": "0.0.9"
+        "copydirectory": "0.0.9",
+        "trumbowyg": "^2.15.2"
     }
 }

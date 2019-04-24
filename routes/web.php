@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+Route::post('/attachments', 'AttachmentsController@store')->name('attachments.store');
+
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 

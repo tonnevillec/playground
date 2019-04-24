@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
     public $fillable = [
-        'content', 'title', 'author_id', 'publie'
+        'content', 'title', 'author_id', 'publie', 'slug'
     ];
 
-    public function tags () {
+    public function tags ()
+    {
         return $this->belongsToMany(Tags::class)->wherePivot('header_tag', '=', false);
     }
 
@@ -24,4 +25,8 @@ class Posts extends Model
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
 
+    public function attachments ()
+    {
+        return $this->morphMany(Attachments::class, 'attachable');
+    }
 }

@@ -11,6 +11,12 @@ require('./bootstrap');
 
 require('@fortawesome/fontawesome-free/js/all');
 
+require('trumbowyg/dist/trumbowyg.min');
+require('trumbowyg/plugins/upload/trumbowyg.upload');
+require('trumbowyg/dist/langs/fr.min');
+require('trumbowyg/dist/plugins/emoji/trumbowyg.emoji.min');
+require('trumbowyg/dist/plugins/table/trumbowyg.table.min');
+
 window.Vue = require('vue');
 
 /**
