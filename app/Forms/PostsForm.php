@@ -34,8 +34,12 @@ class PostsForm extends Form
                     'class' => 'trumbowyg',
                 ]
             ])
-            ->add('publie', 'checkbox', [
-                'value' => 1
+            ->add('publie', 'switch', [
+                'value' => 1,
+                'label' => 'Publié',
+                'attr' => [
+                    'class' => 'success'
+                ]
             ])
             ->add('headerTag', 'entity', [
                 'class' => Tags::class,

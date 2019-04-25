@@ -16,9 +16,14 @@
 
         {!! form_start($form) !!}
 
-        {!! form_row($form->publie) !!}
-
-        {!! form_row($form->title) !!}
+        <div class="row">
+            <div class="col">
+                {!! form_row($form->title) !!}
+            </div>
+            <div class="col-2">
+                {!! form_row($form->publie) !!}
+            </div>
+        </div>
 
         <div class="trumbowyg-dark">
             {!! form_row($form->content, [
