@@ -29,7 +29,10 @@ class PostsForm extends Form
             ])
             ->add('content', 'textarea', [
                 'rules' => 'required',
-                'label' => 'Contenu'
+                'label' => 'Contenu',
+                'attr' => [
+                    'class' => 'trumbowyg',
+                ]
             ])
             ->add('publie', 'checkbox', [
                 'value' => 1
@@ -38,6 +41,7 @@ class PostsForm extends Form
                 'class' => Tags::class,
                 'multiple' => false,
                 'property' => 'name',
+                'label' => 'Tag principal'
             ])
             ->add('tags', 'entity', [
                 'class' => Tags::class,

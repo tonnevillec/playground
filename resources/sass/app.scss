@@ -12,6 +12,10 @@
 @import 'blog';
 @import 'bootstrap_extend';
 
+@import '~trumbowyg/dist/ui/sass/trumbowyg';
+@import '~trumbowyg/dist/plugins/emoji/ui/trumbowyg.emoji.min.css';
+@import '~trumbowyg/dist/plugins/table/ui/trumbowyg.table.min.css';
+
 body {
   //background-image: url('/images/background.png');
   background-color: $body-bg;

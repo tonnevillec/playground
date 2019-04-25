@@ -23,7 +23,8 @@ class CreateInitialDb extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->text('content');
+            $table->string('slug');
+            $table->longText('content');
             $table->bigInteger('author_id')->unsigned();
             $table->boolean('publie')->default(false);
             $table->timestamps();

@@ -20,13 +20,13 @@
                     </p>
 
                     <div class="card-text">
-                        <div class="show-resume-card" id="{{ Str::slug($post->id.' '.$post->title, '-') }}">
+                        <div class="show-resume-card" id="{{ $post->id.$post->slug }}">
                             {!! $post->content !!}
                         </div>
 
                         <div class="text-right">
-                            <button type="button" class="btn btn-sm btn-primary loadMore" data-target="#{{ Str::slug($post->id.' '.$post->title, '-') }}" data-content="#btnShowLess{{ $post->id }}" id="btnShowMore{{ $post->id }}">Read more</button>
-                            <button type="button" class="btn btn-sm btn-primary loadLess" data-target="#{{ Str::slug($post->id.' '.$post->title, '-') }}" data-content="#btnShowMore{{ $post->id }}" id="btnShowLess{{ $post->id }}">Read less</button>
+                            <button type="button" class="btn btn-sm btn-primary loadMore" data-target="#{{ $post->id.$post->slug }}" data-content="#btnShowLess{{ $post->id }}" id="btnShowMore{{ $post->id }}">Read more</button>
+                            <button type="button" class="btn btn-sm btn-primary loadLess" data-target="#{{ $post->id.$post->slug }}" data-content="#btnShowMore{{ $post->id }}" id="btnShowLess{{ $post->id }}">Read less</button>
                         </div>
                     </div>
                 </div>
