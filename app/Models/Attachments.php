@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Storage;
 
 class Attachments extends Model
 {
+    public static function boot () {
+        parent::boot();
+        self::deleted(function ($attachments) {
+            $attachments->deleteFile();
+        });
+    }
+
     protected $guarded = [];
 
     public $appends = ['url'];
@@ -23,6 +30,11 @@ class Attachments extends Model
         $this->name = basename($file);
 
         return $this;
+    }
+
+    public function deleteFile ()
+    {
+        Storage::disk('public')->delete('/uploads/' . $this->name);
     }
 
     public function getUrlAttribute ()

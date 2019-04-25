@@ -31,7 +31,7 @@ class PostsForm extends Form
                 'rules' => 'required',
                 'label' => 'Contenu',
                 'attr' => [
-                    'class' => 'trumbowyg'
+                    'class' => 'trumbowyg',
                 ]
             ])
             ->add('publie', 'checkbox', [
@@ -41,6 +41,7 @@ class PostsForm extends Form
                 'class' => Tags::class,
                 'multiple' => false,
                 'property' => 'name',
+                'label' => 'Tag principal'
             ])
             ->add('tags', 'entity', [
                 'class' => Tags::class,

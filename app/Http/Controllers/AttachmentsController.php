@@ -32,8 +32,5 @@ class AttachmentsController extends Controller {
                 'attachable_type' => 'Ce contenu ne peut pas recevoir de fichiers attachés'
             ], 422);
         }
-
-
-        return '';
     }
 }

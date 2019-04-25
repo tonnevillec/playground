@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+
+use App\Concerns\AttachableConcern;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Posts extends Model
 {
+    use AttachableConcern;
+
     public $fillable = [
         'content', 'title', 'author_id', 'publie', 'slug'
     ];
@@ -25,8 +30,12 @@ class Posts extends Model
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
 
-    public function attachments ()
+    public static function draft ()
     {
-        return $this->morphMany(Attachments::class, 'attachable');
+        return self::firstOrCreate(['title' => 'Brouillon', 'author_id' => Auth::user()->id], [
+            'content' => '',
+            'slug' => '',
+            'author_id' => Auth::user()->id
+        ]);
     }
 }

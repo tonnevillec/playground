@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Forms\PostsForm;
 use App\Http\Controllers\Controller;
 use App\Models\Posts;
-use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -48,7 +47,8 @@ class PostsController extends Controller
 
     public function create ()
     {
-        $form = $this->getForm(null);
+        $post = Posts::draft();
+        $form = $this->getForm($post);
 
         return view('back.posts.edit', [
             'form' => $form,
@@ -75,7 +75,7 @@ class PostsController extends Controller
 
         $post = $this->process($form->getFieldValues(), $post);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Article modifié');
     }
 
     public function store (Request $request)
@@ -85,7 +85,7 @@ class PostsController extends Controller
 
         $post = $this->process($form->getFieldValues());
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Article créé');
     }
 
 
